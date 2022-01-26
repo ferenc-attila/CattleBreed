@@ -1,0 +1,1 @@
+# Szarvasmarha állomány állatnyilvántartása
