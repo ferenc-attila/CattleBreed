@@ -1,6 +1,9 @@
 package breed.cattle;
 
+import breed.supplement.AnimalUnit;
+
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Objects;
 
 public class Cattle implements Comparable<Cattle> {
@@ -29,6 +32,26 @@ public class Cattle implements Comparable<Cattle> {
         if (registration.getEscape() != null && registration.getEscape().getDateOfEscape().isBefore(this.dateOfBirth)) {
             throw new IllegalArgumentException("Invalid date of escape!");
         }
+    }
+
+    public int getAgeInMonths(LocalDate date) {
+        if (date.isBefore(this.dateOfBirth)) {
+            throw new IllegalArgumentException("Invalid date: " + date + "! Date can't be earlier than the birthday of the cattle!");
+        }
+        return Period.between(this.dateOfBirth, date).getYears() * 12 + Period.between(this.dateOfBirth, date).getMonths();
+    }
+
+    public AnimalUnit getAnimalUnit(LocalDate date) {
+        if (getAgeInMonths(date) < 7) {
+            return AnimalUnit.CALF;
+        } else if (getAgeInMonths(date) < 25) {
+            return AnimalUnit.YOUNGLING;
+        } else
+            return AnimalUnit.ADULT;
+    }
+
+    public boolean isEscaped() {
+        return this.registration.getEscape() != null;
     }
 
     @Override

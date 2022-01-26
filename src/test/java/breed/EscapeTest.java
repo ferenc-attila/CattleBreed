@@ -1,5 +1,6 @@
 package breed;
 
+import breed.events.Escape;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

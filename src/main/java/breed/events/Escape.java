@@ -1,4 +1,4 @@
-package breed;
+package breed.events;
 
 import java.time.LocalDate;
 

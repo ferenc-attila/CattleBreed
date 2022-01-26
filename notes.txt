@@ -1,0 +1,67 @@
+Milyen információkat tároljunk az egyes táblákban?
+
+- egyedek (nyilvántartási számok /használati szám, fülszám, leltári szám/,
+		születési idő, tenyészetbe vétel, tenyészetből kivétel, ENÁR regisztráció időpontja,
+		születési súly, elválasztási súly,
+		szájpadlás, szőrszín, szarvalakulás,
+		anya, apa
+		)
+
+		Ivar kérdése vs. korosztály
+		 - meddig üsző, honnan tehén?
+
+		Hízóbika státusz:
+		 - hogyan kerül besorolásra?
+
+- legeltetés (kezdőidőpont, záróidőpont, legeltetés módja
+		-> legelőterület
+		-> egyedek
+		% állategység/ha
+		)
+
+- kezelések (dátum, név,
+		-> egyedek
+		)
+
+		Figyeljük-e pl. a kötelező oltásokat?
+
+- tenyészetből kivétel (dátum, oka
+		-> egyedek
+		-> bevétel(?)
+		)
+
+- mérlegelés (dátum, 
+		-> egyedek,
+		súly)
+
+- tenyészetkód váltás (dátum, honnan, hova,
+		-> egyedek)
+
+- vágás, feldolgozás
+		#Ezen még nem gondolkoztam, hogyan legyen
+
+Segédtáblák
+
+- legelőterületek (név, terület)
+
+- állategység (minimum kor, maximum kor, szorzó)
+
+
+Kimenetek
+
+- gazdi napló havi állományalakulás
+- anyatehén támogatásra beadható állatok listája (hogyan áll elő?)
+- aktuális tenyészetkódokhoz tartozó egyedek listája
+
+Kérdések:
+
+Mi legyen a borzderesekkel?
+
+Hogyan számoljuk ki a legeltetési nyomást? Kezdőidőpont, záróidőpont, esetleg minden nap átlaga?
+Jelenleg ez utóbbi, illetve megadható dátum alapján van implementálva.
+
+Korosítás határai nyílt, vagy zárt intervallumok?
+
+Hibák:
+
+Escape osztály ne legyen null, kérdés, hogy hogyan.

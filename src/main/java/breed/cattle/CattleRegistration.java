@@ -1,6 +1,6 @@
 package breed.cattle;
 
-import breed.Escape;
+import breed.events.Escape;
 
 import java.time.LocalDate;
 
@@ -27,7 +27,11 @@ public class CattleRegistration {
         usageNumber = cattleRegistration.usageNumber;
         inventoryNumber = cattleRegistration.inventoryNumber;
         dateOfIncoming = cattleRegistration.dateOfIncoming;
-        escape = new Escape(cattleRegistration.escape);
+        if (escape != null) {
+            escape = new Escape(cattleRegistration.escape);
+        } else {
+            escape = null;
+        }
         registrationInEnar = cattleRegistration.registrationInEnar;
     }
 

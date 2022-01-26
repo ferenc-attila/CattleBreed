@@ -1,6 +1,7 @@
 package breed.cattle;
 
-import breed.Escape;
+import breed.events.Escape;
+import breed.supplement.AnimalUnit;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -65,6 +66,86 @@ class CattleTest {
         assertEquals("HU 2345 2345 25", cattle.getEarTagNumber());
         assertEquals(LocalDate.of(2022, 1, 1), cattle.getDateOfBirth());
         assertEquals(LocalDate.of(2022, 1, 1), cattle.getRegistration().getDateOfIncoming());
+    }
+
+    @Test
+    void getAgeInMonthsTest() {
+        CattleProperties properties = new CattleProperties("SSR",
+                "grey",
+                "float",
+                "Bimbó",
+                "HU 2345 2345 23",
+                "HU 2345 2345 24",
+                "Heves természetű");
+        CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), LocalDate.parse("2022-01-08"));
+        Cattle initCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2022-01-01"), properties, registration);
+
+        assertEquals(0, initCattle.getAgeInMonths(LocalDate.of(2022, 1,31)));
+        assertEquals(1, initCattle.getAgeInMonths(LocalDate.of(2022, 2,2)));
+        assertEquals(2, initCattle.getAgeInMonths(LocalDate.of(2022, 3,31)));
+        assertEquals(1, initCattle.getAgeInMonths(LocalDate.of(2022, 2,28)));
+    }
+
+    @Test
+    void getAgeInMonthsTooEarlyDateTest() {
+        CattleProperties properties = new CattleProperties("SSR",
+                "grey",
+                "float",
+                "Bimbó",
+                "HU 2345 2345 23",
+                "HU 2345 2345 24",
+                "Heves természetű");
+        CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), LocalDate.parse("2022-01-08"));
+        Cattle initCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2022-01-01"), properties, registration);
+
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> initCattle.getAgeInMonths(LocalDate.of(1965,1,1)));
+        assertEquals("Invalid date: 1965-01-01! Date can't be earlier than the birthday of the cattle!", iae.getMessage());
+    }
+
+    @Test
+    void getAnimalUnitTest() {
+        CattleProperties properties = new CattleProperties("SSR",
+                "grey",
+                "float",
+                "Bimbó",
+                "HU 2345 2345 23",
+                "HU 2345 2345 24",
+                "Heves természetű");
+        CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2017-04-01"), LocalDate.parse("2017-04-08"));
+        Cattle initCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2017-04-01"), properties, registration);
+
+        assertEquals(AnimalUnit.CALF, initCattle.getAnimalUnit(LocalDate.of(2017,10,31)));
+        assertEquals(AnimalUnit.YOUNGLING, initCattle.getAnimalUnit(LocalDate.of(2017,11,1)));
+        assertEquals(AnimalUnit.YOUNGLING, initCattle.getAnimalUnit(LocalDate.of(2019,4,30)));
+        assertEquals(AnimalUnit.ADULT, initCattle.getAnimalUnit(LocalDate.of(2019,5,1)));
+    }
+
+    @Test
+    void isEscapedTest() {
+        CattleProperties properties = new CattleProperties("SSR",
+                "white",
+                "ox",
+                "Hanga",
+                "HU 2345 2345 23",
+                "HU 2345 2345 24",
+                "Szelíd természetű");
+        CattleRegistration livingRegistration = new CattleRegistration(126, "BKE 12456", LocalDate.parse("2018-04-01"), LocalDate.parse("2018-04-08"));
+        Cattle livingCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2018-04-01"), properties, livingRegistration);
+
+        CattleProperties soldProperties = new CattleProperties("SSR",
+                "grey",
+                "float",
+                "Bimbó",
+                "HU 2345 2345 23",
+                "HU 2345 2345 24",
+                "Heves természetű");
+        CattleRegistration soldRegistration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2017-04-01"), LocalDate.parse("2017-04-08"));
+        Cattle soldCattle = new Cattle("HU 2345 2345 26", LocalDate.parse("2017-04-01"), properties, soldRegistration);
+        Escape escape = new Escape(1, LocalDate.parse("2022-01-01"), "értékesítés");
+        soldCattle.getRegistration().setEscape(escape);
+
+        assertTrue(soldCattle.isEscaped());
+        assertFalse(livingCattle.isEscaped());
     }
 
     @Test

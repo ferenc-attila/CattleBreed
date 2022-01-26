@@ -1,6 +1,6 @@
 package breed.cattle;
 
-import breed.Escape;
+import breed.events.Escape;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
