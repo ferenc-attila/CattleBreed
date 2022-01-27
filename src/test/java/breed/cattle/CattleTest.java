@@ -80,10 +80,10 @@ class CattleTest {
         CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), LocalDate.parse("2022-01-08"));
         Cattle initCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2022-01-01"), properties, registration);
 
-        assertEquals(0, initCattle.getAgeInMonths(LocalDate.of(2022, 1,31)));
-        assertEquals(1, initCattle.getAgeInMonths(LocalDate.of(2022, 2,2)));
-        assertEquals(2, initCattle.getAgeInMonths(LocalDate.of(2022, 3,31)));
-        assertEquals(1, initCattle.getAgeInMonths(LocalDate.of(2022, 2,28)));
+        assertEquals(0, initCattle.getAgeInMonths(LocalDate.of(2022, 1, 31)));
+        assertEquals(1, initCattle.getAgeInMonths(LocalDate.of(2022, 2, 2)));
+        assertEquals(2, initCattle.getAgeInMonths(LocalDate.of(2022, 3, 31)));
+        assertEquals(1, initCattle.getAgeInMonths(LocalDate.of(2022, 2, 28)));
     }
 
     @Test
@@ -98,7 +98,7 @@ class CattleTest {
         CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), LocalDate.parse("2022-01-08"));
         Cattle initCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2022-01-01"), properties, registration);
 
-        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> initCattle.getAgeInMonths(LocalDate.of(1965,1,1)));
+        IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> initCattle.getAgeInMonths(LocalDate.of(1965, 1, 1)));
         assertEquals("Invalid date: 1965-01-01! Date can't be earlier than the birthday of the cattle!", iae.getMessage());
     }
 
@@ -114,10 +114,11 @@ class CattleTest {
         CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2017-04-01"), LocalDate.parse("2017-04-08"));
         Cattle initCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2017-04-01"), properties, registration);
 
-        assertEquals(AnimalUnit.CALF, initCattle.getAnimalUnit(LocalDate.of(2017,10,31)));
-        assertEquals(AnimalUnit.YOUNGLING, initCattle.getAnimalUnit(LocalDate.of(2017,11,1)));
-        assertEquals(AnimalUnit.YOUNGLING, initCattle.getAnimalUnit(LocalDate.of(2019,4,30)));
-        assertEquals(AnimalUnit.ADULT, initCattle.getAnimalUnit(LocalDate.of(2019,5,1)));
+        assertEquals(AnimalUnit.CALF, initCattle.getAnimalUnit(LocalDate.of(2017, 10, 31)));
+        assertEquals(AnimalUnit.YOUNGLING, initCattle.getAnimalUnit(LocalDate.of(2017, 11, 1)));
+        assertEquals(AnimalUnit.YOUNGLING, initCattle.getAnimalUnit(LocalDate.of(2019, 4, 30)));
+        assertEquals(AnimalUnit.ADULT, initCattle.getAnimalUnit(LocalDate.of(2019, 5, 1)));
+        assertEquals("felnőtt", initCattle.getAnimalUnit(LocalDate.of(2019, 5, 1)).getName());
     }
 
     @Test
@@ -140,7 +141,7 @@ class CattleTest {
                 "HU 2345 2345 24",
                 "Heves természetű");
         CattleRegistration soldRegistration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2017-04-01"), LocalDate.parse("2017-04-08"));
-        Cattle soldCattle = new Cattle("HU 2345 2345 26", LocalDate.parse("2017-04-01"), properties, soldRegistration);
+        Cattle soldCattle = new Cattle("HU 2345 2345 26", LocalDate.parse("2017-04-01"), soldProperties, soldRegistration);
         Escape escape = new Escape(1, LocalDate.parse("2022-01-01"), "értékesítés");
         soldCattle.getRegistration().setEscape(escape);
 

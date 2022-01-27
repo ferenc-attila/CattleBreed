@@ -27,7 +27,7 @@ public class CattleRegistration {
         usageNumber = cattleRegistration.usageNumber;
         inventoryNumber = cattleRegistration.inventoryNumber;
         dateOfIncoming = cattleRegistration.dateOfIncoming;
-        if (escape != null) {
+        if (cattleRegistration.escape != null) {
             escape = new Escape(cattleRegistration.escape);
         } else {
             escape = null;

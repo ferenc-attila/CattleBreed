@@ -60,7 +60,11 @@ Mi legyen a borzderesekkel?
 Hogyan számoljuk ki a legeltetési nyomást? Kezdőidőpont, záróidőpont, esetleg minden nap átlaga?
 Jelenleg ez utóbbi, illetve megadható dátum alapján van implementálva.
 
-Korosítás határai nyílt, vagy zárt intervallumok?
+Korosítás határai nyílt, vagy zárt intervallumok (pl. 24. vagy 25. hónap elején válik felnőtté)?
+
+Létezik-e olyan, amikor egy boci kikerül a rendszerből, majd később visszakerül. Ha igen, hogyan kezeljük?
+
+Mi alapján kerülnek az egyes legelőterületekre az állatok (korcsoport, ivar, borjas tehenek a borjaikkal, stb.)?
 
 Hibák:
 
