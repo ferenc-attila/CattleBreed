@@ -66,6 +66,10 @@ Létezik-e olyan, amikor egy boci kikerül a rendszerből, majd később visszak
 
 Mi alapján kerülnek az egyes legelőterületekre az állatok (korcsoport, ivar, borjas tehenek a borjaikkal, stb.)?
 
-Hibák:
+Kényszervágás, pusztulás legyen-e elkülönítve?
+
+Hibák, fejlesztések:
 
 Escape osztály ne legyen null, kérdés, hogy hogyan.
+CauseOfEscape is legyen enum.
+A gazdálkodási napló breed értéke a Breed osztályban ne szövegesen legyen beállítva. A fajták kezelésére ki kell találni a jó megoldást.

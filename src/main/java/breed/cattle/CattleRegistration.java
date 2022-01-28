@@ -9,15 +9,17 @@ public class CattleRegistration {
     private int usageNumber;
     private String inventoryNumber;
     private LocalDate dateOfIncoming;
+    private CauseOfIncoming causeOfIncoming;
     private Escape escape = null;
     private LocalDate registrationInEnar;
 
-    public CattleRegistration(LocalDate dateOfIncoming) {
+    public CattleRegistration(LocalDate dateOfIncoming, CauseOfIncoming causeOfIncoming) {
         this.dateOfIncoming = dateOfIncoming;
+        this.causeOfIncoming = causeOfIncoming;
     }
 
-    public CattleRegistration(int usageNumber, String inventoryNumber, LocalDate dateOfIncoming, LocalDate registrationInEnar) {
-        this(dateOfIncoming);
+    public CattleRegistration(int usageNumber, String inventoryNumber, LocalDate dateOfIncoming, CauseOfIncoming causeOfIncoming, LocalDate registrationInEnar) {
+        this(dateOfIncoming, causeOfIncoming);
         this.usageNumber = usageNumber;
         this.inventoryNumber = inventoryNumber;
         this.registrationInEnar = registrationInEnar;
@@ -27,6 +29,7 @@ public class CattleRegistration {
         usageNumber = cattleRegistration.usageNumber;
         inventoryNumber = cattleRegistration.inventoryNumber;
         dateOfIncoming = cattleRegistration.dateOfIncoming;
+        causeOfIncoming = cattleRegistration.causeOfIncoming;
         if (cattleRegistration.escape != null) {
             escape = new Escape(cattleRegistration.escape);
         } else {
@@ -53,6 +56,10 @@ public class CattleRegistration {
 
     public LocalDate getDateOfIncoming() {
         return dateOfIncoming;
+    }
+
+    public CauseOfIncoming getCauseOfIncoming() {
+        return causeOfIncoming;
     }
 
     public Escape getEscape() {

@@ -23,7 +23,7 @@ class CattleTest {
                 "HU 2345 2345 23",
                 "HU 2345 2345 24",
                 "Heves természetű");
-        CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), LocalDate.parse("2022-01-08"));
+        CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), CauseOfIncoming.REPRODUCTION, LocalDate.parse("2022-01-08"));
         Cattle cattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2022-01-01"), properties, registration);
 
         assertEquals("HU 2345 2345 25", cattle.getEarTagNumber());
@@ -41,7 +41,7 @@ class CattleTest {
                 "HU 2345 2345 23",
                 "HU 2345 2345 24",
                 "Heves természetű");
-        CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), LocalDate.parse("2022-01-08"));
+        CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), CauseOfIncoming.REPRODUCTION, LocalDate.parse("2022-01-08"));
         Escape escape = new Escape(1, LocalDate.parse("2021-01-01"), "kényszervágás");
         registration.setEscape(escape);
 
@@ -58,7 +58,7 @@ class CattleTest {
                 "HU 2345 2345 23",
                 "HU 2345 2345 24",
                 "Heves természetű");
-        CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), LocalDate.parse("2022-01-08"));
+        CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), CauseOfIncoming.REPRODUCTION, LocalDate.parse("2022-01-08"));
         Cattle initCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2022-01-01"), properties, registration);
 
         Cattle cattle = new Cattle(initCattle);
@@ -77,7 +77,7 @@ class CattleTest {
                 "HU 2345 2345 23",
                 "HU 2345 2345 24",
                 "Heves természetű");
-        CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), LocalDate.parse("2022-01-08"));
+        CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), CauseOfIncoming.REPRODUCTION, LocalDate.parse("2022-01-08"));
         Cattle initCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2022-01-01"), properties, registration);
 
         assertEquals(0, initCattle.getAgeInMonths(LocalDate.of(2022, 1, 31)));
@@ -95,7 +95,7 @@ class CattleTest {
                 "HU 2345 2345 23",
                 "HU 2345 2345 24",
                 "Heves természetű");
-        CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), LocalDate.parse("2022-01-08"));
+        CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), CauseOfIncoming.REPRODUCTION, LocalDate.parse("2022-01-08"));
         Cattle initCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2022-01-01"), properties, registration);
 
         IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> initCattle.getAgeInMonths(LocalDate.of(1965, 1, 1)));
@@ -111,7 +111,7 @@ class CattleTest {
                 "HU 2345 2345 23",
                 "HU 2345 2345 24",
                 "Heves természetű");
-        CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2017-04-01"), LocalDate.parse("2017-04-08"));
+        CattleRegistration registration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2017-04-01"), CauseOfIncoming.BUYING, LocalDate.parse("2017-04-08"));
         Cattle initCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2017-04-01"), properties, registration);
 
         assertEquals(AnimalUnit.CALF, initCattle.getAnimalUnit(LocalDate.of(2017, 10, 31)));
@@ -130,7 +130,7 @@ class CattleTest {
                 "HU 2345 2345 23",
                 "HU 2345 2345 24",
                 "Szelíd természetű");
-        CattleRegistration livingRegistration = new CattleRegistration(126, "BKE 12456", LocalDate.parse("2018-04-01"), LocalDate.parse("2018-04-08"));
+        CattleRegistration livingRegistration = new CattleRegistration(126, "BKE 12456", LocalDate.parse("2018-04-01"), CauseOfIncoming.REPRODUCTION, LocalDate.parse("2018-04-08"));
         Cattle livingCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2018-04-01"), properties, livingRegistration);
 
         CattleProperties soldProperties = new CattleProperties("SSR",
@@ -140,7 +140,7 @@ class CattleTest {
                 "HU 2345 2345 23",
                 "HU 2345 2345 24",
                 "Heves természetű");
-        CattleRegistration soldRegistration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2017-04-01"), LocalDate.parse("2017-04-08"));
+        CattleRegistration soldRegistration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2017-04-01"), CauseOfIncoming.REPRODUCTION, LocalDate.parse("2017-04-08"));
         Cattle soldCattle = new Cattle("HU 2345 2345 26", LocalDate.parse("2017-04-01"), soldProperties, soldRegistration);
         Escape escape = new Escape(1, LocalDate.parse("2022-01-01"), "értékesítés");
         soldCattle.getRegistration().setEscape(escape);
@@ -158,7 +158,7 @@ class CattleTest {
                 "HU 2345 2345 23",
                 "HU 2345 2345 24",
                 "Heves természetű");
-        CattleRegistration firstRegistration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), LocalDate.parse("2022-01-08"));
+        CattleRegistration firstRegistration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), CauseOfIncoming.REPRODUCTION, LocalDate.parse("2022-01-08"));
         Cattle firstCattle = new Cattle("HU 2345 2345 26", LocalDate.parse("2022-01-01"), firstProperties, firstRegistration);
         CattleProperties secondProperties = new CattleProperties("SSR",
                 "grey",
@@ -167,7 +167,7 @@ class CattleTest {
                 "HU 2345 2345 23",
                 "HU 2345 2345 24",
                 "Heves természetű");
-        CattleRegistration secondRegistration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), LocalDate.parse("2022-01-08"));
+        CattleRegistration secondRegistration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), CauseOfIncoming.REPRODUCTION, LocalDate.parse("2022-01-08"));
         Cattle secondCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2022-01-01"), secondProperties, secondRegistration);
 
         List<Cattle> listOfCattle = new ArrayList<>(Arrays.asList(firstCattle, secondCattle));
@@ -185,7 +185,7 @@ class CattleTest {
                 "HU 2345 2345 23",
                 "HU 2345 2345 24",
                 "Heves természetű");
-        CattleRegistration firstRegistration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), LocalDate.parse("2022-01-08"));
+        CattleRegistration firstRegistration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), CauseOfIncoming.REPRODUCTION, LocalDate.parse("2022-01-08"));
         Cattle firstCattle = new Cattle("HU 2345 2345 26", LocalDate.parse("2022-01-01"), firstProperties, firstRegistration);
         CattleProperties secondProperties = new CattleProperties("SSR",
                 "grey",
@@ -194,7 +194,7 @@ class CattleTest {
                 "HU 2345 2345 23",
                 "HU 2345 2345 24",
                 "Heves természetű");
-        CattleRegistration secondRegistration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), LocalDate.parse("2022-01-08"));
+        CattleRegistration secondRegistration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), CauseOfIncoming.REPRODUCTION, LocalDate.parse("2022-01-08"));
         Cattle secondCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2022-01-01"), secondProperties, secondRegistration);
         CattleProperties thirdProperties = new CattleProperties("RRR",
                 "white",
@@ -203,7 +203,7 @@ class CattleTest {
                 "HU 2345 2345 28",
                 "HU 2345 2345 29",
                 "Szelíd");
-        CattleRegistration thirdRegistration = new CattleRegistration(12, "CFD 456789", LocalDate.parse("2021-05-22"), LocalDate.parse("2021-05-22"));
+        CattleRegistration thirdRegistration = new CattleRegistration(12, "CFD 456789", LocalDate.parse("2021-05-22"), CauseOfIncoming.REPRODUCTION, LocalDate.parse("2021-05-22"));
         Cattle thirdCattle = new Cattle("HU 2345 2345 26", LocalDate.parse("2021-05-22"), thirdProperties, thirdRegistration);
 
         assertNotEquals(firstCattle, secondCattle);
@@ -219,7 +219,7 @@ class CattleTest {
                 "HU 2345 2345 23",
                 "HU 2345 2345 24",
                 "Heves természetű");
-        CattleRegistration firstRegistration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), LocalDate.parse("2022-01-08"));
+        CattleRegistration firstRegistration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), CauseOfIncoming.REPRODUCTION, LocalDate.parse("2022-01-08"));
         Cattle firstCattle = new Cattle("HU 2345 2345 26", LocalDate.parse("2022-01-01"), firstProperties, firstRegistration);
         CattleProperties secondProperties = new CattleProperties("SSR",
                 "grey",
@@ -228,7 +228,7 @@ class CattleTest {
                 "HU 2345 2345 23",
                 "HU 2345 2345 24",
                 "Heves természetű");
-        CattleRegistration secondRegistration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), LocalDate.parse("2022-01-08"));
+        CattleRegistration secondRegistration = new CattleRegistration(125, "BKE 123456", LocalDate.parse("2022-01-01"), CauseOfIncoming.REPRODUCTION, LocalDate.parse("2022-01-08"));
         Cattle secondCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2022-01-01"), secondProperties, secondRegistration);
         CattleProperties thirdProperties = new CattleProperties("RRR",
                 "white",
@@ -237,7 +237,7 @@ class CattleTest {
                 "HU 2345 2345 28",
                 "HU 2345 2345 29",
                 "Szelíd");
-        CattleRegistration thirdRegistration = new CattleRegistration(12, "CFD 456789", LocalDate.parse("2021-05-22"), LocalDate.parse("2021-05-22"));
+        CattleRegistration thirdRegistration = new CattleRegistration(12, "CFD 456789", LocalDate.parse("2021-05-22"), CauseOfIncoming.REPRODUCTION, LocalDate.parse("2021-05-22"));
         Cattle thirdCattle = new Cattle("HU 2345 2345 26", LocalDate.parse("2021-05-22"), thirdProperties, thirdRegistration);
 
         assertNotEquals(firstCattle.hashCode(), secondCattle.hashCode());

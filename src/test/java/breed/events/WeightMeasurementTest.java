@@ -3,6 +3,7 @@ package breed.events;
 import breed.cattle.Cattle;
 import breed.cattle.CattleProperties;
 import breed.cattle.CattleRegistration;
+import breed.cattle.CauseOfIncoming;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -14,7 +15,7 @@ class WeightMeasurementTest {
     @Test
     void createTest() {
         CattleProperties properties = new CattleProperties("male");
-        CattleRegistration registration = new CattleRegistration(LocalDate.parse("2021-05-04"));
+        CattleRegistration registration = new CattleRegistration(LocalDate.parse("2021-05-04"), CauseOfIncoming.BUYING);
         Cattle cattle = new Cattle("HU 4567 4567 89", LocalDate.parse("2021-05-04"), properties, registration);
 
         WeightMeasurement measurement = new WeightMeasurement(cattle, LocalDate.of(2021, 8, 25), 45.8);

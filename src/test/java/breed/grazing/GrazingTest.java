@@ -3,6 +3,7 @@ package breed.grazing;
 import breed.cattle.Cattle;
 import breed.cattle.CattleProperties;
 import breed.cattle.CattleRegistration;
+import breed.cattle.CauseOfIncoming;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,11 +17,21 @@ class GrazingTest {
 
     @BeforeEach
     void init() {
-        Cattle firstCattle = new Cattle("HU 1234 5678 90", LocalDate.parse("2019-06-30"), new CattleProperties("male"), new CattleRegistration(LocalDate.parse("2019-06-30")));
-        Cattle secondCattle = new Cattle("HU 1234 5678 91", LocalDate.parse("2017-04-30"), new CattleProperties("female"), new CattleRegistration(LocalDate.parse("2017-04-30")));
-        Cattle thirdCattle = new Cattle("HU 1234 5678 92", LocalDate.parse("2020-02-01"), new CattleProperties("female"), new CattleRegistration(LocalDate.parse("2020-01-01")));
-        Cattle fourthCattle = new Cattle("HU 1234 5678 93", LocalDate.parse("2019-06-15"), new CattleProperties("female"), new CattleRegistration(LocalDate.parse("2019-06-15")));
-        Cattle fifthCattle = new Cattle("HU 1234 5678 94", LocalDate.parse("2020-06-01"), new CattleProperties("male"), new CattleRegistration(LocalDate.parse("2020-06-01")));
+        Cattle firstCattle = new Cattle("HU 1234 5678 90", LocalDate.parse("2019-06-30"),
+                new CattleProperties("male"),
+                new CattleRegistration(LocalDate.parse("2019-06-30"), CauseOfIncoming.BUYING));
+        Cattle secondCattle = new Cattle("HU 1234 5678 91", LocalDate.parse("2017-04-30"),
+                new CattleProperties("female"),
+                new CattleRegistration(LocalDate.parse("2017-04-30"), CauseOfIncoming.BUYING));
+        Cattle thirdCattle = new Cattle("HU 1234 5678 92", LocalDate.parse("2020-02-01"),
+                new CattleProperties("female"),
+                new CattleRegistration(LocalDate.parse("2020-01-01"), CauseOfIncoming.BUYING));
+        Cattle fourthCattle = new Cattle("HU 1234 5678 93", LocalDate.parse("2019-06-15"),
+                new CattleProperties("female"),
+                new CattleRegistration(LocalDate.parse("2019-06-15"), CauseOfIncoming.BUYING));
+        Cattle fifthCattle = new Cattle("HU 1234 5678 94", LocalDate.parse("2020-06-01"),
+                new CattleProperties("male"),
+                new CattleRegistration(LocalDate.parse("2020-06-01"), CauseOfIncoming.BUYING));
 
         grazing = new Grazing(1, LocalDate.parse("2020-06-15"), LocalDate.parse("2021-07-15"), new GrazeField(1, "Rakottyás", 125.04), "villanypásztor");
 
@@ -43,11 +54,15 @@ class GrazingTest {
 
     @Test
     void addCattleTest() {
-        Cattle cattle = new Cattle("HU 1234 5678 95", LocalDate.parse("2019-04-30"), new CattleProperties("female"), new CattleRegistration(LocalDate.parse("2019-04-30")));
+        Cattle cattle = new Cattle("HU 1234 5678 95", LocalDate.parse("2019-04-30"),
+                new CattleProperties("female"),
+                new CattleRegistration(LocalDate.parse("2019-04-30"), CauseOfIncoming.BUYING));
         grazing.addCattle(cattle);
 
         assertEquals(6, grazing.getHerd().size());
-        assertTrue(grazing.getHerd().contains(new Cattle("HU 1234 5678 95", LocalDate.parse("2019-04-30"), new CattleProperties("female"), new CattleRegistration(LocalDate.parse("2019-04-30")))));
+        assertTrue(grazing.getHerd().contains(new Cattle("HU 1234 5678 95", LocalDate.parse("2019-04-30"),
+                new CattleProperties("female"),
+                new CattleRegistration(LocalDate.parse("2019-04-30"), CauseOfIncoming.BUYING))));
     }
 
     @Test
@@ -58,7 +73,9 @@ class GrazingTest {
 
     @Test
     void addCattleWithExistingEarTagNumberTest() {
-        Cattle cattle = new Cattle("HU 1234 5678 90", LocalDate.parse("2019-04-30"), new CattleProperties("female"), new CattleRegistration(LocalDate.parse("2019-04-30")));
+        Cattle cattle = new Cattle("HU 1234 5678 90", LocalDate.parse("2019-04-30"),
+                new CattleProperties("female"),
+                new CattleRegistration(LocalDate.parse("2019-04-30"), CauseOfIncoming.BUYING));
 
         IllegalArgumentException iae = assertThrows(IllegalArgumentException.class, () -> grazing.addCattle(cattle));
         assertEquals("There is a cattle in the herd with this ear tag number: HU 1234 5678 90", iae.getMessage());
