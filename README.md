@@ -1,6 +1,6 @@
-#Szarvasmarha állomány nyilvántartása
+# Szarvasmarha állomány nyilvántartása
 
-##Adatszerkezet
+## Adatszerkezet
 
 1. Egyedek (nyilvántartási számok /használati szám, fülszám, leltári szám/,
   születési idő, tenyészetbe vétel, tenyészetből kivétel, ENÁR regisztráció időpontja,
@@ -30,20 +30,20 @@
 8. Vágás, feldolgozás
     _(Ezen még nem gondolkoztam, hogyan legyen)_
 
-###Segédtáblák
+### Segédtáblák
 
 Legelőterületek (név, terület)
 
 Állategység (minimum kor, maximum kor, szorzó)
 
-##Kimenetek
+## Kimenetek
 
 - gazdi napló havi állományalakulás
 - anyatehén támogatásra beadható állatok listája (hogyan áll elő?)
 - aktuális tenyészetkódokhoz tartozó egyedek listája
 - legeltetési napló alapadatai
 
-##Kérdések
+## Kérdések
 
 Mi legyen a borzderesekkel?
 
@@ -53,7 +53,7 @@ Mi alapján kerülnek az egyes legelőterületekre az állatok (korcsoport, ivar
 
 Kényszervágás, pusztulás legyen-e elkülönítve?
 
-##Hibák, fejlesztések
+## Hibák, szükséges fejlesztések
 
 1. Escape osztály ne legyen null, egyelőre kérdés, hogy hogyan.
 2. CauseOfEscape is legyen enum.
