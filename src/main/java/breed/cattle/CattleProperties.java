@@ -7,22 +7,20 @@ public class CattleProperties {
     private String formOfHorn;
     private String sex;
     private String name;
-    private String motherEarTagNumber;
-    private String fatherEarTagNumber;
+    private Parents parents;
     private String notes;
 
     public CattleProperties(String sex) {
         this.sex = sex;
     }
 
-    public CattleProperties(String sex, String motherEarTagNumber, String fatherEarTagNumber) {
+    public CattleProperties(String sex, Parents parents) {
         this(sex);
-        this.motherEarTagNumber = motherEarTagNumber;
-        this.fatherEarTagNumber = fatherEarTagNumber;
+        this.parents = parents;
     }
 
-    public CattleProperties(String palate, String color, String formOfHorn, String sex, String name, String motherEarTagNumber, String fatherEarTagNumber, String notes) {
-        this(sex, motherEarTagNumber, fatherEarTagNumber);
+    public CattleProperties(String palate, String color, String formOfHorn, String sex, String name, Parents parents, String notes) {
+        this(sex, parents);
         this.palate = palate;
         this.color = color;
         this.formOfHorn = formOfHorn;
@@ -36,8 +34,7 @@ public class CattleProperties {
         formOfHorn = cattleProperties.formOfHorn;
         sex = cattleProperties.sex;
         name = cattleProperties.name;
-        motherEarTagNumber = cattleProperties.motherEarTagNumber;
-        fatherEarTagNumber = cattleProperties.fatherEarTagNumber;
+        parents = new Parents(cattleProperties.parents);
         notes = cattleProperties.notes;
     }
 
@@ -81,20 +78,12 @@ public class CattleProperties {
         this.name = name;
     }
 
-    public String getMotherEarTagNumber() {
-        return motherEarTagNumber;
+    public Parents getParents() {
+        return parents;
     }
 
-    public void setMotherEarTagNumber(String motherEarTagNumber) {
-        this.motherEarTagNumber = motherEarTagNumber;
-    }
-
-    public String getFatherEarTagNumber() {
-        return fatherEarTagNumber;
-    }
-
-    public void setFatherEarTagNumber(String fatherEarTagNumber) {
-        this.fatherEarTagNumber = fatherEarTagNumber;
+    public void setParents(Parents parents) {
+        this.parents = parents;
     }
 
     public String getNotes() {

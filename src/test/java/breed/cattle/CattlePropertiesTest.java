@@ -15,22 +15,23 @@ class CattlePropertiesTest {
 
     @Test
     void createWithParentsTest() {
-        CattleProperties initProperties = new CattleProperties("cow", "HU 2345 2345 23", "HU 2345 2345 24");
+        Parents parents = new Parents("HU 2345 2345 23", "HU 2345 2345 24");
+        CattleProperties initProperties = new CattleProperties("cow", parents);
 
         assertEquals("cow", initProperties.getSex());
-        assertEquals("HU 2345 2345 23", initProperties.getMotherEarTagNumber());
-        assertEquals("HU 2345 2345 24", initProperties.getFatherEarTagNumber());
+        assertEquals("HU 2345 2345 23", initProperties.getParents().getMotherEarTagNumber());
+        assertEquals("HU 2345 2345 24", initProperties.getParents().getFatherEarTagNumber());
     }
 
     @Test
     void createWithEveryAttributesTest() {
+        Parents parents = new Parents("HU 2345 2345 23", "HU 2345 2345 24");
         CattleProperties initProperties = new CattleProperties("SSR",
                 "grey",
                 "csákó",
                 "float",
                 "Bimbó",
-                "HU 2345 2345 23",
-                "HU 2345 2345 24",
+                parents,
                 "Heves természetű");
 
         assertEquals("SSR", initProperties.getPalate());
@@ -38,20 +39,20 @@ class CattlePropertiesTest {
         assertEquals("csákó", initProperties.getFormOfHorn());
         assertEquals("float", initProperties.getSex());
         assertEquals("Bimbó", initProperties.getName());
-        assertEquals("HU 2345 2345 23", initProperties.getMotherEarTagNumber());
-        assertEquals("HU 2345 2345 24", initProperties.getFatherEarTagNumber());
+        assertEquals("HU 2345 2345 23", initProperties.getParents().getMotherEarTagNumber());
+        assertEquals("HU 2345 2345 24", initProperties.getParents().getFatherEarTagNumber());
         assertEquals("Heves természetű", initProperties.getNotes());
     }
 
     @Test
     void copyConstructorTest() {
+        Parents parents = new Parents("HU 2345 2345 23", "HU 2345 2345 24");
         CattleProperties initProperties = new CattleProperties("SSR",
                 "grey",
                 "csákó",
                 "float",
                 "Bimbó",
-                "HU 2345 2345 23",
-                "HU 2345 2345 24",
+                parents,
                 "Heves természetű");
 
         CattleProperties cattleProperties = new CattleProperties(initProperties);
@@ -61,20 +62,20 @@ class CattlePropertiesTest {
         assertEquals("csákó", cattleProperties.getFormOfHorn());
         assertEquals("float", cattleProperties.getSex());
         assertEquals("Bimbó", cattleProperties.getName());
-        assertEquals("HU 2345 2345 23", cattleProperties.getMotherEarTagNumber());
-        assertEquals("HU 2345 2345 24", cattleProperties.getFatherEarTagNumber());
+        assertEquals("HU 2345 2345 23", cattleProperties.getParents().getMotherEarTagNumber());
+        assertEquals("HU 2345 2345 24", cattleProperties.getParents().getFatherEarTagNumber());
         assertEquals("Heves természetű", cattleProperties.getNotes());
     }
 
     @Test
     void setPalateTest() {
+        Parents parents = new Parents("HU 2345 2345 23", "HU 2345 2345 24");
         CattleProperties initProperties = new CattleProperties("SSR",
                 "grey",
                 "csákó",
                 "float",
                 "Bimbó",
-                "HU 2345 2345 23",
-                "HU 2345 2345 24",
+                parents,
                 "Heves természetű");
 
         initProperties.setPalate("RRS");
@@ -83,13 +84,13 @@ class CattlePropertiesTest {
 
     @Test
     void setColorTest() {
+        Parents parents = new Parents("HU 2345 2345 23", "HU 2345 2345 24");
         CattleProperties initProperties = new CattleProperties("SSR",
                 "grey",
                 "csákó",
                 "float",
                 "Bimbó",
-                "HU 2345 2345 23",
-                "HU 2345 2345 24",
+                parents,
                 "Heves természetű");
 
         initProperties.setColor("white");
@@ -98,17 +99,39 @@ class CattlePropertiesTest {
 
     @Test
     void setFormOfHornTest() {
+        Parents parents = new Parents("HU 2345 2345 23", "HU 2345 2345 24");
         CattleProperties initProperties = new CattleProperties("SSR",
                 "grey",
                 "csákó",
                 "float",
                 "Bimbó",
-                "HU 2345 2345 23",
-                "HU 2345 2345 24",
+                parents,
                 "Heves természetű");
 
         initProperties.setFormOfHorn("gallyas");
         assertEquals("gallyas", initProperties.getFormOfHorn());
+    }
+
+    @Test
+    void setParentsTest() {
+        Parents parents = new Parents("HU 2345 2345 23", "HU 2345 2345 24");
+        CattleProperties initProperties = new CattleProperties("SSR",
+                "grey",
+                "csákó",
+                "float",
+                "Bimbó",
+                parents,
+                "Heves természetű");
+
+        initProperties.setParents(new Parents("HU 1234 1234 56"));
+
+        assertEquals("HU 1234 1234 56", initProperties.getParents().getMotherEarTagNumber());
+        assertNull(initProperties.getParents().getFatherEarTagNumber());
+
+        initProperties.setParents(new Parents("HU 5678 5678 90", "HU 2468 2468 13"));
+
+        assertEquals("HU 5678 5678 90", initProperties.getParents().getMotherEarTagNumber());
+        assertEquals("HU 2468 2468 13", initProperties.getParents().getFatherEarTagNumber());
     }
 
     @Test
@@ -122,13 +145,13 @@ class CattlePropertiesTest {
 
     @Test
     void setNameTest() {
+        Parents parents = new Parents("HU 2345 2345 23", "HU 2345 2345 24");
         CattleProperties initProperties = new CattleProperties("SSR",
                 "grey",
                 "csákó",
                 "float",
                 "Bimbó",
-                "HU 2345 2345 23",
-                "HU 2345 2345 24",
+                parents,
                 "Heves természetű");
 
         initProperties.setName("Fátyol");
@@ -136,33 +159,14 @@ class CattlePropertiesTest {
     }
 
     @Test
-    void setMotherEarTagNumberTest() {
-        CattleProperties initProperties = new CattleProperties("cow");
-
-        initProperties.setMotherEarTagNumber("HU 2345 2345 23");
-
-        assertEquals("HU 2345 2345 23", initProperties.getMotherEarTagNumber());
-
-    }
-
-    @Test
-    void setFatherEarTagNumberTest() {
-        CattleProperties initProperties = new CattleProperties("cow");
-
-        initProperties.setFatherEarTagNumber("HU 2345 2345 24");
-
-        assertEquals("HU 2345 2345 24", initProperties.getFatherEarTagNumber());
-    }
-
-    @Test
     void setNotesTest() {
+        Parents parents = new Parents("HU 2345 2345 23", "HU 2345 2345 24");
         CattleProperties initProperties = new CattleProperties("SSR",
                 "grey",
                 "csákó",
                 "float",
                 "Bimbó",
-                "HU 2345 2345 23",
-                "HU 2345 2345 24",
+                parents,
                 "Heves természetű");
 
         initProperties.setNotes("Nyugodt természetű");
