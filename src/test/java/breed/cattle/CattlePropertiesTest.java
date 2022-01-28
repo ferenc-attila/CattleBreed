@@ -26,6 +26,7 @@ class CattlePropertiesTest {
     void createWithEveryAttributesTest() {
         CattleProperties initProperties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -34,6 +35,7 @@ class CattlePropertiesTest {
 
         assertEquals("SSR", initProperties.getPalate());
         assertEquals("grey", initProperties.getColor());
+        assertEquals("csákó", initProperties.getFormOfHorn());
         assertEquals("float", initProperties.getSex());
         assertEquals("Bimbó", initProperties.getName());
         assertEquals("HU 2345 2345 23", initProperties.getMotherEarTagNumber());
@@ -45,6 +47,7 @@ class CattlePropertiesTest {
     void copyConstructorTest() {
         CattleProperties initProperties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -55,6 +58,7 @@ class CattlePropertiesTest {
 
         assertEquals("SSR", cattleProperties.getPalate());
         assertEquals("grey", cattleProperties.getColor());
+        assertEquals("csákó", cattleProperties.getFormOfHorn());
         assertEquals("float", cattleProperties.getSex());
         assertEquals("Bimbó", cattleProperties.getName());
         assertEquals("HU 2345 2345 23", cattleProperties.getMotherEarTagNumber());
@@ -66,6 +70,7 @@ class CattlePropertiesTest {
     void setPalateTest() {
         CattleProperties initProperties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -80,6 +85,7 @@ class CattlePropertiesTest {
     void setColorTest() {
         CattleProperties initProperties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -88,6 +94,21 @@ class CattlePropertiesTest {
 
         initProperties.setColor("white");
         assertEquals("white", initProperties.getColor());
+    }
+
+    @Test
+    void setFormOfHornTest() {
+        CattleProperties initProperties = new CattleProperties("SSR",
+                "grey",
+                "csákó",
+                "float",
+                "Bimbó",
+                "HU 2345 2345 23",
+                "HU 2345 2345 24",
+                "Heves természetű");
+
+        initProperties.setFormOfHorn("gallyas");
+        assertEquals("gallyas", initProperties.getFormOfHorn());
     }
 
     @Test
@@ -103,6 +124,7 @@ class CattlePropertiesTest {
     void setNameTest() {
         CattleProperties initProperties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -136,6 +158,7 @@ class CattlePropertiesTest {
     void setNotesTest() {
         CattleProperties initProperties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",

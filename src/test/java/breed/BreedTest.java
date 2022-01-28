@@ -20,6 +20,7 @@ class BreedTest {
     void init() {
         CattleProperties firstProperties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -29,6 +30,7 @@ class BreedTest {
         Cattle firstCattle = new Cattle("HU 2345 2345 26", LocalDate.parse("2022-01-01"), firstProperties, firstRegistration);
         CattleProperties secondProperties = new CattleProperties("RRS",
                 "white",
+                "gallyas",
                 "bull",
                 "Vő",
                 "HU 2345 2345 23",
@@ -38,6 +40,7 @@ class BreedTest {
         Cattle secondCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2022-01-01"), secondProperties, secondRegistration);
         CattleProperties thirdProperties = new CattleProperties("RRR",
                 "grey",
+                "sodró",
                 "ox",
                 "Burnót",
                 "HU 2345 2345 28",
@@ -57,6 +60,7 @@ class BreedTest {
     void addCattleTest() {
         CattleProperties properties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -80,6 +84,7 @@ class BreedTest {
     void addCattleWithExistingEarTagNumberTest() {
         CattleProperties properties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",

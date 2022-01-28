@@ -4,6 +4,7 @@ public class CattleProperties {
 
     private String palate;
     private String color;
+    private String formOfHorn;
     private String sex;
     private String name;
     private String motherEarTagNumber;
@@ -20,10 +21,11 @@ public class CattleProperties {
         this.fatherEarTagNumber = fatherEarTagNumber;
     }
 
-    public CattleProperties(String palate, String color, String sex, String name, String motherEarTagNumber, String fatherEarTagNumber, String notes) {
+    public CattleProperties(String palate, String color, String formOfHorn, String sex, String name, String motherEarTagNumber, String fatherEarTagNumber, String notes) {
         this(sex, motherEarTagNumber, fatherEarTagNumber);
         this.palate = palate;
         this.color = color;
+        this.formOfHorn = formOfHorn;
         this.name = name;
         this.notes = notes;
     }
@@ -31,6 +33,7 @@ public class CattleProperties {
     public CattleProperties(CattleProperties cattleProperties) {
         palate = cattleProperties.palate;
         color = cattleProperties.color;
+        formOfHorn = cattleProperties.formOfHorn;
         sex = cattleProperties.sex;
         name = cattleProperties.name;
         motherEarTagNumber = cattleProperties.motherEarTagNumber;
@@ -52,6 +55,14 @@ public class CattleProperties {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getFormOfHorn() {
+        return formOfHorn;
+    }
+
+    public void setFormOfHorn(String formOfHorn) {
+        this.formOfHorn = formOfHorn;
     }
 
     public String getSex() {

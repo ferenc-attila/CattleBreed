@@ -18,6 +18,7 @@ class CattleTest {
     void createTest() {
         CattleProperties properties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -29,6 +30,7 @@ class CattleTest {
         assertEquals("HU 2345 2345 25", cattle.getEarTagNumber());
         assertEquals(LocalDate.of(2022, 1, 1), cattle.getDateOfBirth());
         assertEquals("grey", cattle.getProperties().getColor());
+        assertEquals("csákó", cattle.getProperties().getFormOfHorn());
         assertEquals(LocalDate.of(2022, 1, 1), cattle.getRegistration().getDateOfIncoming());
     }
 
@@ -36,6 +38,7 @@ class CattleTest {
     void createWithInvalidDateOfEscapeTest() {
         CattleProperties properties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -53,6 +56,7 @@ class CattleTest {
     void copyConstructorTest() {
         CattleProperties properties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -72,6 +76,7 @@ class CattleTest {
     void getAgeInMonthsTest() {
         CattleProperties properties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -90,6 +95,7 @@ class CattleTest {
     void getAgeInMonthsTooEarlyDateTest() {
         CattleProperties properties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -106,6 +112,7 @@ class CattleTest {
     void getAnimalUnitTest() {
         CattleProperties properties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -125,6 +132,7 @@ class CattleTest {
     void isEscapedTest() {
         CattleProperties properties = new CattleProperties("SSR",
                 "white",
+                "gallyas",
                 "ox",
                 "Hanga",
                 "HU 2345 2345 23",
@@ -135,6 +143,7 @@ class CattleTest {
 
         CattleProperties soldProperties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -153,6 +162,7 @@ class CattleTest {
     void compareToTest() {
         CattleProperties firstProperties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -162,6 +172,7 @@ class CattleTest {
         Cattle firstCattle = new Cattle("HU 2345 2345 26", LocalDate.parse("2022-01-01"), firstProperties, firstRegistration);
         CattleProperties secondProperties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -180,6 +191,7 @@ class CattleTest {
     void equalsTest() {
         CattleProperties firstProperties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -189,6 +201,7 @@ class CattleTest {
         Cattle firstCattle = new Cattle("HU 2345 2345 26", LocalDate.parse("2022-01-01"), firstProperties, firstRegistration);
         CattleProperties secondProperties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -198,6 +211,7 @@ class CattleTest {
         Cattle secondCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2022-01-01"), secondProperties, secondRegistration);
         CattleProperties thirdProperties = new CattleProperties("RRR",
                 "white",
+                "sodró",
                 "bull",
                 "Burnót",
                 "HU 2345 2345 28",
@@ -214,6 +228,7 @@ class CattleTest {
     void hashCodeTest() {
         CattleProperties firstProperties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -223,6 +238,7 @@ class CattleTest {
         Cattle firstCattle = new Cattle("HU 2345 2345 26", LocalDate.parse("2022-01-01"), firstProperties, firstRegistration);
         CattleProperties secondProperties = new CattleProperties("SSR",
                 "grey",
+                "csákó",
                 "float",
                 "Bimbó",
                 "HU 2345 2345 23",
@@ -232,6 +248,7 @@ class CattleTest {
         Cattle secondCattle = new Cattle("HU 2345 2345 25", LocalDate.parse("2022-01-01"), secondProperties, secondRegistration);
         CattleProperties thirdProperties = new CattleProperties("RRR",
                 "white",
+                "kukó",
                 "bull",
                 "Burnót",
                 "HU 2345 2345 28",
