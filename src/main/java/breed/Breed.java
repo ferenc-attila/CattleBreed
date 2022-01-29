@@ -8,8 +8,8 @@ import farminglog.LivestockDecrease;
 import farminglog.LivestockGrowth;
 
 import java.time.LocalDate;
-import java.util.Set;
-import java.util.TreeSet;
+import java.time.Month;
+import java.util.*;
 import java.util.function.Predicate;
 
 public class Breed {
@@ -28,6 +28,17 @@ public class Breed {
         if (isInHerd(cattle.getEarTagNumber())) {
             throw new IllegalArgumentException("There is a cattle in the herd with this ear tag number: " + cattle.getEarTagNumber());
         }
+    }
+
+    public List<LivestockChange> createAnnualLivestockChange(int year) {
+        List<LivestockChange> livestockChanges = new ArrayList<>();
+        for (AnimalUnit actual : AnimalUnit.values()) {
+            livestockChanges.addAll(Arrays.stream(Month.values())
+                    .map(month -> LocalDate.of(year, month, 1))
+                    .map(date -> createLivestockChangeForMonthsBeforeDate(actual, date, 1))
+                    .toList());
+        }
+        return livestockChanges;
     }
 
     public LivestockChange createLivestockChangeForMonthsBeforeDate(AnimalUnit animalUnit, LocalDate date, int months) {

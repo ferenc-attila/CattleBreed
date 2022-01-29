@@ -36,7 +36,8 @@ public class Cattle implements Comparable<Cattle> {
 
     public int getAgeInMonths(LocalDate date) {
         if (date.isBefore(this.dateOfBirth)) {
-            throw new IllegalArgumentException("Invalid date: " + date + "! Date can't be earlier than the birthday of the cattle!");
+            date = dateOfBirth;
+            //throw new IllegalArgumentException("Invalid date: " + date + "! Date can't be earlier than the birthday of the cattle!");
         }
         return Period.between(this.dateOfBirth, date).getYears() * 12 + Period.between(this.dateOfBirth, date).getMonths();
     }
