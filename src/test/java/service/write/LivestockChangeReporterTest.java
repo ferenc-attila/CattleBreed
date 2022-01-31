@@ -30,7 +30,6 @@ class LivestockChangeReporterTest {
         LivestockChangeReporter livestockChangeReporter = new LivestockChangeReporter(";");
         Breed breed = new ReadHerdFromCsv().readCsvAsBreed(Path.of("src/test/resources/nyilvantartas_2021.csv"));
         List<String> fileContent = livestockChangeReporter.createAnnualReport(2020, breed);
-        fileContent.stream().forEach(System.out::println);
         try {
             Files.write(Path.of("src/test/resources/summary.csv"), fileContent);
         } catch (IOException ioe) {
