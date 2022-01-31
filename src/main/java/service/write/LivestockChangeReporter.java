@@ -31,6 +31,16 @@ public class LivestockChangeReporter {
         return header.toString();
     }
 
+//    public List<String> createAnnualReportAsMap(int year, Breed breed) {
+//        List<LivestockChange> livestockChanges = breed.createAnnualLivestockChange(year);
+//        List<String> report = new ArrayList<>();
+//        report.add(createHeader());
+//        for (AnimalUnit actual : AnimalUnit.values()) {
+//            for
+//        }
+//        return report;
+//    }
+
     public List<String> createAnnualReport(int year, Breed breed) {
         List<LivestockChange> livestockChanges = breed.createAnnualLivestockChange(year);
         List<String> report = new ArrayList<>();
