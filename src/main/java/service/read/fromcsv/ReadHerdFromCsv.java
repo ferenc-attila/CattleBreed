@@ -19,13 +19,7 @@ public class ReadHerdFromCsv {
         try {
             for (String actual : fileContent) {
                 String[] row = actual.split(",");
-                CattleProperties properties;
-                if (row.length == 8) {
-                    properties = new CattleProperties(row[6], "", "", row[3], row[4], new Parents(row[6], row[7]), "");
-                }
-                else {
-                    properties = new CattleProperties(row[6], "", "", row[3], row[4], new Parents(row[6]), "");
-                }
+                CattleProperties properties = parseCattleProperties(row);
                 CattleRegistration registration = new CattleRegistration(Integer.parseInt(row[0]), "", LocalDate.parse(row[2]), CauseOfIncoming.REPRODUCTION, LocalDate.parse(row[5]));
                 Cattle cattle = new Cattle(row[1], LocalDate.parse(row[2]), properties, registration);
                 breed.addCattle(cattle);
@@ -43,5 +37,14 @@ public class ReadHerdFromCsv {
         } catch (IOException ioe) {
             throw new IllegalStateException("No such file!");
         }
-    }
+     }
+
+private CattleProperties parseCattleProperties (String[] row) {
+if (row.length == 8) {
+                    properties = new CattleProperties(row[6], "", "", row[3], row[4], new Parents(row[6], row[7]), "");
+                }
+                else {
+                    properties = new CattleProperties(row[6], "", "", row[3], row[4], new Parents(row[6]), "");
+                }
+}
 }
