@@ -15,7 +15,7 @@ public class ReadHerdFromCsv {
         List<String> fileContent = readCsv(path);
         fileContent.remove(0);
         Breed breed = new Breed();
-        int count = 0;
+        int count = 2;
         try {
             for (String actual : fileContent) {
                 String[] row = actual.split(",");
