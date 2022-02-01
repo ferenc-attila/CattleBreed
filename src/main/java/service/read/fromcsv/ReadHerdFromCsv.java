@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class ReadHerdFromCsv {
@@ -25,8 +26,8 @@ public class ReadHerdFromCsv {
                 breed.addCattle(cattle);
                 count++;
             }
-        } catch (NumberFormatException nfe) {
-            throw new IllegalArgumentException("Invalid number in csv row number " + count);
+        } catch (NumberFormatException | DateTimeParseException e) {
+            throw new IllegalArgumentException("Invalid value in csv row number " + count, e);
         }
         return breed;
     }
