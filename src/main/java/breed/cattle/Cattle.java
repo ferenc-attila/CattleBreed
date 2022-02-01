@@ -47,8 +47,10 @@ public class Cattle implements Comparable<Cattle> {
             return AnimalUnit.CALF;
         } else if (getAgeInMonths(date) <= AnimalUnit.YOUNGLING.getMaxMonths()) {
             return AnimalUnit.YOUNGLING;
-        } else
+        } else if (getAgeInMonths(date) > AnimalUnit.YOUNGLING.getMaxMonths()) {
             return AnimalUnit.ADULT;
+        }
+        return null;
     }
 
     public boolean isEscaped() {
