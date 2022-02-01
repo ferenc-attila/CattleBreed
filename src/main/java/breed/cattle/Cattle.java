@@ -82,10 +82,10 @@ public class Cattle implements Comparable<Cattle> {
     }
 
     public CattleProperties getProperties() {
-        return properties;
+        return new CattleProperties(properties);
     }
 
     public CattleRegistration getRegistration() {
-        return registration;
+        return new CattleRegistration(registration);
     }
 }

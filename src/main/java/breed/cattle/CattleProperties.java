@@ -79,7 +79,7 @@ public class CattleProperties {
     }
 
     public Parents getParents() {
-        return parents;
+        return new Parents(parents);
     }
 
     public void setParents(Parents parents) {

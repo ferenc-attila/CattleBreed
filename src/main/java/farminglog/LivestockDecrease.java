@@ -14,6 +14,13 @@ public class LivestockDecrease {
         this.scrapping = scrapping;
     }
 
+    public LivestockDecrease(LivestockDecrease livestockDecrease) {
+        this.death = livestockDecrease.death;
+        this.selling = livestockDecrease.selling;
+        this.reclassification = livestockDecrease.reclassification;
+        this.scrapping = livestockDecrease.scrapping;
+    }
+
     public int getSumOfDecrease() {
         return death + selling + getSumOfReclassificationAndScrapping();
     }

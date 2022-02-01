@@ -43,10 +43,10 @@ public class LivestockChange {
     }
 
     public LivestockGrowth getLivestockGrowth() {
-        return livestockGrowth;
+        return new LivestockGrowth(livestockGrowth);
     }
 
     public LivestockDecrease getLivestockDecrease() {
-        return livestockDecrease;
+        return new LivestockDecrease(livestockDecrease);
     }
 }

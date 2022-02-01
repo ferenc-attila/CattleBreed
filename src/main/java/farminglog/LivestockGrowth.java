@@ -12,6 +12,12 @@ public class LivestockGrowth {
         this.reclassification = reclassification;
     }
 
+    public LivestockGrowth(LivestockGrowth livestockGrowth) {
+        this.reproduction = livestockGrowth.reproduction;
+        this.buying = livestockGrowth.buying;
+        this.reclassification = livestockGrowth.reclassification;
+    }
+
     public int getSumOfGrowth() {
         return reproduction + buying + reclassification;
     }
