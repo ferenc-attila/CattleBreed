@@ -37,14 +37,13 @@ public class ReadHerdFromCsv {
         } catch (IOException ioe) {
             throw new IllegalStateException("No such file!");
         }
-     }
+    }
 
-private CattleProperties parseCattleProperties (String[] row) {
-if (row.length == 8) {
-                    properties = new CattleProperties(row[6], "", "", row[3], row[4], new Parents(row[6], row[7]), "");
-                }
-                else {
-                    properties = new CattleProperties(row[6], "", "", row[3], row[4], new Parents(row[6]), "");
-                }
-}
+    private CattleProperties parseCattleProperties(String[] row) {
+        if (row.length == 8) {
+            return new CattleProperties(row[6], "", "", row[3], row[4], new Parents(row[6], row[7]), "");
+        } else {
+            return new CattleProperties(row[6], "", "", row[3], row[4], new Parents(row[6]), "");
+        }
+    }
 }
